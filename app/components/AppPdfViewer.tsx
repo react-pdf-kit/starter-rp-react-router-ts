@@ -1,28 +1,28 @@
 import {
   RPProvider,
-  RPDefaultLayout,
+  RPLayout,
   RPPages,
   RPConfig,
   type RPProviderProps,
   type RPLayoutProps,
-} from "@pdf-viewer/react";
+} from "@react-pdf-kit/viewer";
 
 interface Props {
   showToolbar?: boolean;
-  pdfSrc : string;
+  pdfSrc: string;
   providerProps?: RPProviderProps;
   defaultLayoutProps?: RPLayoutProps;
 }
 
-const AppPdfViewer = (props : Props) => {
+const AppPdfViewer = (props: Props) => {
   const { showToolbar = true, defaultLayoutProps, pdfSrc } = props;
   return (
     <RPConfig licenseKey="YOUR_LICENSE_KEY">
       <RPProvider src={pdfSrc}>
         {showToolbar ? (
-          <RPDefaultLayout {...defaultLayoutProps}>
+          <RPLayout toolbar {...defaultLayoutProps}>
             <RPPages />
-          </RPDefaultLayout>
+          </RPLayout>
         ) : (
           <div style={{ width: "100%", height: "550px" }}>
             <RPPages />
